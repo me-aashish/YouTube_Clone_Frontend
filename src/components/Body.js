@@ -1,13 +1,21 @@
 import React from "react";
+import Sidebar from "./Sidebar";
+import VideoContainer from "./VideoContainer";
+import { useSelector } from "react-redux";
 
 const Body = () => {
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+
+  
   return (
     <div className="grid grid-flow-col ">
-      <div className="flex grid-cols-2 border-2 shadow-lg w-44 ">
-        <h1>Hamburger Menu</h1>
-      </div>
+      {isMenuOpen ? (
+        <div className="flex grid-cols-2 border-2 shadow-lg w-44 ">
+          <Sidebar />
+        </div>
+      ):null}
       <div className="flex grid-cols-10">
-        <h1>Video Container</h1>
+        <VideoContainer />
       </div>
     </div>
   );
