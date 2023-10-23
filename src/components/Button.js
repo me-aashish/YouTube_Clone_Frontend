@@ -1,7 +1,6 @@
 import React from 'react'
 
-const Button = ({list}) => { 
-  console.log(list);  
+const Button = ({list}) => {  
   return (
     <div className="">
         {list.map((btnItem, index) => {

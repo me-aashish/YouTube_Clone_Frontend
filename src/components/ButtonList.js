@@ -15,7 +15,7 @@ const ButtonList = () => {
     "Indian Pop Music",
   ];
   return (
-    <div>
+    <div className="inline-block">
       <Button list={list} />
     </div>
   );
