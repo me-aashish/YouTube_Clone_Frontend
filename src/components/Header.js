@@ -9,8 +9,10 @@ import { toggleMenu } from "../utils/appSlice";
 const Header = () => {
   const dispatch = useDispatch();
   const hamburgerOnClickHandler = () => {
+    
     dispatch(toggleMenu());
   }
+
   return (
     <div className="grid grid-flow-col border-2 shadow-lg h-16">
       <div className="flex grid-cols-2">

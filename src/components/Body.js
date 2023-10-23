@@ -2,8 +2,10 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import VideoContainer from "./VideoContainer";
 import { useSelector } from "react-redux";
+import MainContainer from "./MainContainer";
 
 const Body = () => {
+  
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
   
@@ -15,7 +17,7 @@ const Body = () => {
         </div>
       ):null}
       <div className="flex grid-cols-10">
-        <VideoContainer />
+        <MainContainer />
       </div>
     </div>
   );
