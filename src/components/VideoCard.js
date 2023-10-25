@@ -6,7 +6,7 @@ const VideoCard = ({ info }) => {
     // const { channeltitle, thumbnails, title} = snippet;
 
   return (
-    <div className="p-2 m-2 w-60 shadow-lg">
+    <div className="p-2 m-2 w-60 h-[346px] rounded-lg hover:bg-zinc-200">
       <img
         src={info?.snippet?.thumbnails?.medium?.url}
         alt="video-thumbnail"
