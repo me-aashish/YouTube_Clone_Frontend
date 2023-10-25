@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import YOUTUBE_API_LINK from '../constants/youTubeVideoApiLink'
 import VideoCard from './VideoCard';
-
+import Shimmer from './Shimmer';
 
 
 const VideoContainer = () => {
@@ -20,7 +20,8 @@ const VideoContainer = () => {
     // console.log(json.items);
     setVideos(json.items);
   }
-  return  (
+  
+  return videos.length === 0 ? (<Shimmer />)  :  (
     <div className="flex flex-wrap">
       {videos.map((video) => {
         return <Link to={"/watch?v=" + video.id}><VideoCard info={video} key={video.id}/> </Link>;
