@@ -4,6 +4,7 @@ import YOUTUBE_API_LINK from '../constants/youTubeVideoApiLink'
 import VideoCard from './VideoCard';
 
 
+
 const VideoContainer = () => {
 
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
@@ -18,9 +19,8 @@ const VideoContainer = () => {
     // console.log(json.items);
     setVideos(json.items);
   }
-
-  return (
-    <div className={isMenuOpen ? "flex flex-wrap" : "flex"}>
+  return  (
+    <div className="flex flex-wrap">
       {videos.map((video) => {
         return <VideoCard info={video} key={video.id}/>;
       })}

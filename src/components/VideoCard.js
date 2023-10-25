@@ -10,7 +10,7 @@ const VideoCard = ({ info }) => {
       <img
         src={info?.snippet?.thumbnails?.medium?.url}
         alt="video-thumbnail"
-        className="h-40 w-56 rounded-xl"
+        className="h-36 w-56 rounded-xl"
       />
       <ul>
         <li className="font-bold">{info?.snippet?.title}</li>
