@@ -17,6 +17,7 @@ const Header = () => {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   useEffect(() => {
 
@@ -89,11 +90,13 @@ const Header = () => {
             onChange={(e) => {
               setSearchQuery(e.target.value);
             }}
+            onFocus={()=> setShowSuggestions(true)}
+            onBlur={()=> setShowSuggestions(false)}
           />
           <button className="rounded-r-full p-2 bg-gray-200 w-16">🔍</button>
         </div>
         
-          <div className="sticky ml-44 bg-white w-[34rem] px-2 shadow-lg rounded-lg border">
+          {showSuggestions && (<div className="sticky ml-44 bg-white w-[34rem] px-2 shadow-lg rounded-lg border">
             <ul>
               {searchSuggestions.map((suggestion) => 
                 
@@ -106,7 +109,7 @@ const Header = () => {
               )}
               {/* <li className="py-2 px-3 font-bold hover:bg-gray-100 rounded-lg" >{searchQuery}</li> */}
             </ul>
-          </div>
+          </div>)}
       </div>
       <div className="flex grid-cols-2 ml-28">
         <img
