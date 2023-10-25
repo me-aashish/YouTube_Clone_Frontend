@@ -5,8 +5,8 @@ const Shimmer = () => {
     <div className="flex flex-wrap">
       {Array(50)
         .fill("")
-        .map((ele) => (
-          <div className="p-2 m-3 h-36 w-56 rounded-lg bg-zinc-300"></div>
+        .map((ele, index) => (
+          <div className="p-2 m-3 h-36 w-56 rounded-lg bg-zinc-300" key={index}></div>
         ))}
     </div>
   );

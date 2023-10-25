@@ -11,15 +11,16 @@ const WatchPage = () => {
 
     const [getSearchParam] = useSearchParams();
   return (
-    <div className="ml-10 mt-2">
+    <div className="ml-10 mt-2 ">
       <iframe
-        width="900"
-        height="450"
+        width="800"
+        height="400"
         src={"https://www.youtube.com/embed/" + getSearchParam.get("v")}
         title="YouTube video player"
-        frameborder="0"
+        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
+        allowFullScreen
+        className="rounded-lg"
       ></iframe>
     </div>
   );
