@@ -78,22 +78,34 @@ const Header = () => {
           onClick={() => hamburgerOnClickHandler()}
         />
         {/* // you tube logo */}
-        <a href="/"><img
-          src={YouTubeIconLink}
-          alt="youtube-icon"
-          className="flex p-2 w-28 h-[53px] cursor-pointer"
-        />
+        <a href="/">
+          <img
+            src={YouTubeIconLink}
+            alt="youtube-icon"
+            className="flex p-2 w-28 h-[53px] cursor-pointer"
+          />
         </a>
       </div>
-      <div className="flex grid-cols-8 p-3 h-[59px]">
-        <input
-          type="text"
-          placeholder="Search"
-          className=" rounded-l-full p-2 border-2 w-[550px] ml-40"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <button className="rounded-r-full p-2 bg-gray-200 w-16">🔍</button>
+      <div>
+        <div className="flex grid-cols-8 p-3 h-[59px]">
+          <input
+            type="text"
+            placeholder="Search"
+            className=" rounded-l-full p-2 border-2 w-[550px] ml-40"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button className="rounded-r-full p-2 bg-gray-200 w-16">🔍</button>
+        </div>
+        <div className="fixed ml-44 bg-white w-[34rem] px-5 py-2 shadow-lg rounded-lg">
+          <ul>
+            <li className="py-2 font-bold">🔍 iphone</li>
+            <li className="py-2 font-bold">🔍 iphone</li>
+            <li className="py-2 font-bold">🔍 iphone</li>
+            <li className="py-2 font-bold">🔍 iphone</li>
+            <li className="py-2 font-bold">🔍 iphone</li>
+          </ul>
+        </div>
       </div>
       <div className="flex grid-cols-2 ml-28">
         <img
