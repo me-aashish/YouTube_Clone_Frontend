@@ -3,9 +3,10 @@ import HamBurgerIconLink from "../constants/hamburgerIconLink";
 import YouTubeIconLink from "../constants/youTubeIconLink";
 import NotificationIconLink from "../constants/notificationIconLink";
 import UserIconLink from "../constants/userIconLink";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import YOUTUBE_SEARCH_API from "../constants/youTubSearchApiLink";
+import { cacheResults } from "../utils/searchSlice";
 
 
 const Header = () => {
@@ -18,6 +19,7 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const searchCache = useSelector(store => store.search);
 
   useEffect(() => {
 
@@ -28,7 +30,12 @@ const Header = () => {
      */
 
     const timer = setTimeout(() => {
-      getSearchSuggestions();
+      if(searchCache[searchQuery]){
+        setSearchSuggestions(searchCache[searchQuery]);
+      }
+      else{
+        getSearchSuggestions();
+      }
     }, 200);
 
     return () => {
@@ -58,7 +65,9 @@ const Header = () => {
     );
     const json = await data.json();
     setSearchSuggestions(json[1]);
-    
+    dispatch(cacheResults({
+      [searchQuery]: json[1]
+    }))
   }
 
   return (
