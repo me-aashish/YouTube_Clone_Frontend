@@ -28,7 +28,7 @@ const LiveChat = () => {
                 name: generateRandomName(),
                 message: generateRandomString(20)
             }));
-        }, 2000)
+        }, 3000)
 
         return () => {
             clearTimeout(chatPollInterval);
@@ -37,12 +37,12 @@ const LiveChat = () => {
 
   return (
     <div>
-      <div className="mt-2 ml-3 border p-2 border-black bg-white-50 shadow-xl w-[360px] h-[400px] rounded-lg overflow-y-scroll flex flex-col-reverse">
+      <div className="mt-2 ml-3 border p-2 border-black bg-white-50 shadow-xl w-[360px] h-[350px] rounded-lg overflow-y-scroll flex flex-col-reverse">
         {messages.map((c, i) => (
           <LiveChatMessage name={c.name} message={c.message} key={i} />
         ))}
       </div>
-      <div className="flex">
+      <div className="flex h-[50px]">
         <span>
           <input
             type="text"
@@ -52,7 +52,12 @@ const LiveChat = () => {
             onChange={(e) => setRealName(e.target.value)}
           />
         </span>
-        <span>
+        <form onSubmit={(e) =>{
+            e.preventDefault();
+            handleSendMessage(realName, realMessage);
+            setRealName("");
+            setRealMessage("");
+        }}>
           <input
             type="text"
             placeholder="message"
@@ -60,7 +65,7 @@ const LiveChat = () => {
             value={realMessage}
             onChange={(e) => setRealMessage(e.target.value)}
           />
-        </span>
+        </form>
         <span>
           <img
             src={sendMessageIconLink}
