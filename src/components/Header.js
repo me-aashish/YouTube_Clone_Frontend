@@ -30,6 +30,8 @@ const Header = () => {
      */
 
     const timer = setTimeout(() => {
+
+      // return if result is present in the cache
       if(searchCache[searchQuery]){
         setSearchSuggestions(searchCache[searchQuery]);
       }
@@ -65,6 +67,8 @@ const Header = () => {
     );
     const json = await data.json();
     setSearchSuggestions(json[1]);
+
+    // update the cache is result is not present
     dispatch(cacheResults({
       [searchQuery]: json[1]
     }))
