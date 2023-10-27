@@ -17,9 +17,26 @@ const commentsData = [
               {
                 name: "Aashish",
                 text: "Hello Comment",
-                replies: [],
+                replies: [
+                  {
+                    name: "Aashish",
+                    text: "Hello Comment",
+                    replies: [
+                      {
+                        name: "Aashish",
+                        text: "Hello Comment",
+                        replies: [],
+                      },
+                    ],
+                  },
+                ],
               },
             ],
+          },
+          {
+            name: "Aashish",
+            text: "Hello Comment",
+            replies: [],
           },
         ],
       },
@@ -59,12 +76,10 @@ const Comment = ({ data }) => {
 
 const CommentsList = ({ comments }) => {
   return comments.map((comment, index) => (
-    <div>
-      <Comment data={comment} key={index} />
-      <div className="pl-5 ml-12 border border-l-black">
-        <Comment data={comment} key={index} />
-        <Comment data={comment} key={index} />
-        <Comment data={comment} key={index} />
+    <div key={index}>
+      <Comment data={comment} />
+      <div className="pl-5 ml-12 border-l-2">
+        <CommentsList comments={comment.replies} />
       </div>
     </div>
   ));
