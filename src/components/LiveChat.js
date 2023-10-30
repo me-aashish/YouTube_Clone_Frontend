@@ -37,7 +37,10 @@ const LiveChat = () => {
 
   return (
     <div>
-      <div className="mt-2 ml-3 border p-2 border-black bg-white-50 shadow-xl w-[360px] h-[350px] rounded-lg overflow-y-scroll flex flex-col-reverse">
+      <div className="mt-2 ml-3 w-[360px]border p-2 border-black bg-white-50 shadow-xl font-semibold text-center">
+        Live Chat
+      </div>
+      <div className="mt-2 ml-3 border p-2 border-black bg-white-50 shadow-xl w-[360px] h-[300px] rounded-lg overflow-y-scroll flex flex-col-reverse">
         {messages.map((c, i) => (
           <LiveChatMessage name={c.name} message={c.message} key={i} />
         ))}
@@ -52,12 +55,14 @@ const LiveChat = () => {
             onChange={(e) => setRealName(e.target.value)}
           />
         </span>
-        <form onSubmit={(e) =>{
+        <form
+          onSubmit={(e) => {
             e.preventDefault();
             handleSendMessage(realName, realMessage);
             setRealName("");
             setRealMessage("");
-        }}>
+          }}
+        >
           <input
             type="text"
             placeholder="message"
@@ -72,9 +77,9 @@ const LiveChat = () => {
             alt="send"
             className="w-[60px] mt-2 border border-black   rounded-r-lg h-[41px] cursor-pointer"
             onClick={() => {
-                handleSendMessage(realName, realMessage);
-                setRealName("");
-                setRealMessage("");
+              handleSendMessage(realName, realMessage);
+              setRealName("");
+              setRealMessage("");
             }}
           />
         </span>

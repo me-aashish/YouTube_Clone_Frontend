@@ -90,13 +90,14 @@ const Comment = ({ data }) => {
       text: comment,
       replies: [],
     };
-    replies.push(reply);
+    replies.unshift(reply);
     setNewReply(true);
+    setIsReplyVisible(false);
   };
 
   return (
     <>
-      <div className="py-2 flex shadow-sm my-7 rounded-lg px-2">
+      <div className="py-2 inline-block w-[800px] h-[134px] shadow-sm my-7 rounded-lg px-2">
         <img src={UserIconLink} alt="icon" className="w-8 h-8" />
         <div className="px-2">
           <p className="font-bold">{name} </p>
