@@ -7,6 +7,8 @@ import { useDispatch, useSelector} from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import YOUTUBE_SEARCH_API from "../constants/youTubSearchApiLink";
 import { cacheResults } from "../utils/searchSlice";
+import youtubesearchapi from "youtube-search-api"
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 
 const Header = () => {
@@ -60,17 +62,20 @@ const Header = () => {
    */
 
   const getSearchSuggestions = async() => {
-    // console.log(searchQuery);
     const data = await fetch(
-      YOUTUBE_SEARCH_API +
-        searchQuery
+      // YOUTUBE_SEARCH_API +
+      //   searchQuery
+
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${searchQuery}&type=video&regionCode=IN&key=${API_KEY}`
     );
     const json = await data.json();
-    setSearchSuggestions(json[1]);
+    console.log(json?.items);
+    setSearchSuggestions(json);
+    console.log(searchSuggestions);
 
     // update the cache is result is not present
     dispatch(cacheResults({
-      [searchQuery]: json[1]
+      [searchQuery]: json?.items
     }))
   }
 
@@ -111,13 +116,13 @@ const Header = () => {
         
           {showSuggestions && (<div className="sticky ml-44 bg-white w-[34rem] px-2 shadow-lg rounded-lg border">
             <ul>
-              {searchSuggestions.map((suggestion) => 
+              {searchSuggestions && searchSuggestions?.items.map((suggestion) => 
                 
                 (<li
                   className="py-2 px-3 font-bold hover:bg-gray-100 rounded-lg"
                   key={suggestion}
                 >
-                  🔍 {suggestion}
+                  🔍 {suggestion?.snippet?.title}
                 </li>)
               )}
               {/* <li className="py-2 px-3 font-bold hover:bg-gray-100 rounded-lg" >{searchQuery}</li> */}

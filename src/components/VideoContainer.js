@@ -8,6 +8,8 @@ import Shimmer from './Shimmer';
 
 const VideoContainer = () => {
 
+  console.log(YOUTUBE_API_LINK);
+
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   const [videos, setVideos] = useState([]);
   useEffect(() => {
